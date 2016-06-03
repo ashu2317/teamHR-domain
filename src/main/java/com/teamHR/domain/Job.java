@@ -26,7 +26,7 @@ public class Job extends Entity{
     @DBRef
     private Client requirementRaisedBy;
     @DBRef
-    private List<Recruiter> recruiters;
+    private List<User> recruiters;
     private List<PointOfContact> pointOfContacts;
     private String jobLocation;
     private int positionCount;
@@ -114,11 +114,11 @@ public class Job extends Entity{
         this.requirementRaisedBy = requirementRaisedBy;
     }
 
-    public List<Recruiter> getRecruiters() {
+    public List<User> getRecruiters() {
         return recruiters;
     }
 
-    public void setRecruiters(List<Recruiter> recruiters) {
+    public void setRecruiters(List<User> recruiters) {
         this.recruiters = recruiters;
     }
 

@@ -5,14 +5,13 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
-import java.util.Map;
 
 /**
- * Created by Ashutosh on 25-Mar-16.
+ * Created by Ashutosh on 01-Apr-16.
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-@Document(collection = "Recruiter")
-public class Recruiter extends Entity{
+@Document(collection = "User")
+public class User extends Entity{
     @Id
     private long id;
     private String name;
@@ -28,9 +27,36 @@ public class Recruiter extends Entity{
     private String location;
     private String address;
     private String access;
+    private List<Role> roles;
+    private boolean accountNonExpired;
+    private boolean accountNonLocked;
+    private boolean credentialsNonExpired;
+    private boolean enabled;
 
-    private Map<String,List<Map<String,Boolean>>> accessMap;
+    public User() {
+    }
 
+    public User(User user) {
+        this.id = user.id;
+        this.name = user.name;
+        this.userId = user.userId;
+        this.password = user.password;
+        this.experience = user.experience;
+        this.expertise = user.expertise;
+        this.active = user.active;
+        this.primaryEmail = user.primaryEmail;
+        this.secondaryEmail = user.secondaryEmail;
+        this.primaryContactNumber = user.primaryContactNumber;
+        this.secondaryContactNumber = user.secondaryContactNumber;
+        this.location = user.location;
+        this.address = user.address;
+        this.access = user.access;
+        this.roles = user.roles;
+        this.accountNonExpired = user.accountNonExpired;
+        this.accountNonLocked = user.accountNonLocked;
+        this.credentialsNonExpired = user.credentialsNonExpired;
+        this.enabled = user.enabled;
+    }
 
     public long getId() {
         return id;
@@ -40,20 +66,28 @@ public class Recruiter extends Entity{
         this.id = id;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getExperience() {
@@ -70,14 +104,6 @@ public class Recruiter extends Entity{
 
     public void setExpertise(String expertise) {
         this.expertise = expertise;
-    }
-
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
     }
 
     public boolean isActive() {
@@ -144,12 +170,43 @@ public class Recruiter extends Entity{
         this.access = access;
     }
 
-    public Map<String, List<Map<String, Boolean>>> getAccessMap() {
-        return accessMap;
+    public List<Role> getRoles() {
+        return roles;
     }
 
-    public void setAccessMap(Map<String, List<Map<String, Boolean>>> accessMap) {
-        this.accessMap = accessMap;
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
+    }
+
+    public boolean isAccountNonExpired() {
+        return accountNonExpired;
+    }
+
+    public void setAccountNonExpired(boolean accountNonExpired) {
+        this.accountNonExpired = accountNonExpired;
+    }
+
+    public boolean isAccountNonLocked() {
+        return accountNonLocked;
+    }
+
+    public void setAccountNonLocked(boolean accountNonLocked) {
+        this.accountNonLocked = accountNonLocked;
+    }
+
+    public boolean isCredentialsNonExpired() {
+        return credentialsNonExpired;
+    }
+
+    public void setCredentialsNonExpired(boolean credentialsNonExpired) {
+        this.credentialsNonExpired = credentialsNonExpired;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 }
-
